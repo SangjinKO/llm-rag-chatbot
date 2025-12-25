@@ -1,0 +1,21 @@
+# Library for loading PDF files and extracting text from each page
+# - Used to convert text-based PDF documents into raw text
+pypdf==5.1.0
+
+# Library for generating semantic embeddings from sentences or text chunks
+# - Runs locally and is free to use
+# - Used for document and query embeddings in the RAG pipeline
+# - "all-MiniLM-L6-v2" was used, which is a lightweight and efficient sentence embedding model
+sentence-transformers==2.7.0
+
+# High-performance vector similarity search library by Facebook AI Research
+# - Stores embedding vectors and performs fast nearest-neighbor search
+# - Core component for the Retrieval step in RAG
+faiss-cpu>=1.9.0
+
+#  Python client library for interacting with a local Ollama server
+# - Used to send prompts and receive responses from locally running LLMs
+# - Enables LLM-based answer generation without using paid cloud APIs
+# - During development and testing, the local model "llama3.2:3b" was used
+#   (a lightweight 3B-parameter LLaMA-based model suitable for RAG pipelines)
+ollama==0.4.4

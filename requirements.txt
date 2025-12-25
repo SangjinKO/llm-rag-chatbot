@@ -19,3 +19,7 @@ faiss-cpu>=1.9.0
 # - During development and testing, the local model "llama3.2:3b" was used
 #   (a lightweight 3B-parameter LLaMA-based model suitable for RAG pipelines)
 ollama==0.4.4
+
+# Streamlit is used to build a lightweight web UI for demonstrating
+# the end-to-end RAG pipeline (PDF upload, retrieval, and answer generation).
+streamlit==1.52.2

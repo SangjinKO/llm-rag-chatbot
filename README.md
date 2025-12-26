@@ -37,6 +37,8 @@ Application Flow (UI Demo):
 - Compare answers: STRICT and GENEROUS
 - Validate how prompt strategy affects answer quality
 
+<img width="1040" height="582" alt="image" src="https://github.com/user-attachments/assets/819bda9b-a7fa-4073-9f5d-91b5fd557e21" />
+
 How to Run:
 ### 1. Create a virtual environment and install dependencies
 ```bash

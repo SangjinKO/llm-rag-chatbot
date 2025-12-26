@@ -1,4 +1,4 @@
-# llm-rag-chatbot
+# LLM-RAG-Chatbot
 
 Date: 2025.12
 

@@ -1,0 +1,53 @@
+# --------------------------------------
+# Python
+# --------------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# --------------------------------------
+# Streamlit
+# --------------------------------------
+.streamlit_tmp/
+.streamlit/
+
+# Streamlit cache (older versions)
+.cache/
+
+# --------------------------------------
+# Local artifacts / runtime files
+# --------------------------------------
+*.log
+*.tmp
+*.temp
+
+# --------------------------------------
+# macOS
+# --------------------------------------
+.DS_Store
+
+# --------------------------------------
+# Editor / IDE
+# --------------------------------------
+.vscode/
+.idea/
+
+# --------------------------------------
+# Jupyter (if ever added)
+# --------------------------------------
+.ipynb_checkpoints/
+
+# --------------------------------------
+# Model / data artifacts (optional)
+# --------------------------------------
+# Uncomment if you later persist FAISS indexes or large files
+# output/
+# *.index
+# *.bin
+

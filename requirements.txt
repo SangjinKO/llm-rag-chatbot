@@ -20,6 +20,22 @@ faiss-cpu>=1.9.0
 #   (a lightweight 3B-parameter LLaMA-based model suitable for RAG pipelines)
 ollama==0.4.4
 
+
+# Official Python client for OpenAI API (ChatGPT)
+# - Used to compare responses from a commercial LLM against a local LLM
+# - Enables evaluation of answer quality, inference behavior, and hallucination risk
+# - API usage is intentionally limited to small-scale evaluation (Phase 1.5)
+openai>=1.30.0
+
+# Google Generative AI Python SDK (Gemini)
+# - Used to compare Google's Gemini models with ChatGPT and local LLMs
+# - Provides a free-tier API suitable for lightweight experiments
+# - Helps analyze differences in grounding and inference across LLM providers
+# google-generativeai>=0.7.0
+# Google Gen AI SDK (Gemini) - current official package (replaces google-generativeai)
+google-genai>=0.6.0
+
+
 # Streamlit is used to build a lightweight web UI for demonstrating
 # the end-to-end RAG pipeline (PDF upload, retrieval, and answer generation).
 streamlit==1.52.2

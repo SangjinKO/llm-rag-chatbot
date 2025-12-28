@@ -53,6 +53,7 @@ pip install -r requirements.txt
 - pull the test model: 
 ```bash
 ollama pull llama3.2:3b
+ollama run llama3.2:3b
 ```
 
 

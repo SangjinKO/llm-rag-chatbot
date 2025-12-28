@@ -51,3 +51,5 @@ ENV/
 # *.index
 # *.bin
 
+# Environment variables (API keys, secrets)
+.env

@@ -112,7 +112,7 @@ ollama run llama3.2:3b
 ```
 
 ### 3. Configure LLM environment (.env)
-- ㅊreate a `.env` file in the project root (`v2_local-to-cloud/`) and set the LLM models and API keys.
+- create a `.env` file in the project root (`v2_local-to-cloud/`) and set the LLM models and API keys.
 
 ```env
 # Local LLM (Ollama)
@@ -132,3 +132,6 @@ GEMINI_MODEL=gemini-2.5-flash
 cd ./v2_local-to-cloud/
 streamlit run streamlit run app/app.py
 ```
+
+<img width="1136" height="621" alt="image" src="https://github.com/user-attachments/assets/434ed7c6-7cc2-4e3d-a9e9-855a82a3ddf6" />
+

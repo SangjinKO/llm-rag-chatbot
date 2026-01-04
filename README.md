@@ -1,45 +1,100 @@
-# LLM-RAG-Chatbot
+# Multi RAG + LLM Comparison
 
-Date: 2025.12
+**Date:** 2026.01  
 
-Goal: Build a local, cost-free LLM-based RAG (Retrieval-Augmented Generation) chatbot that answers user questions strictly grounded in PDF documents, while making the retrieval and prompt behavior transparent and explainable.
+## Goal
+Build a **transparent, evidence-grounded RAG system** that allows:
+- Comparing **multiple LLMs** under identical conditions
+- Observing how **prompt strategy (STRICT vs GENEROUS)** changes answers
+- Minimizing hallucination by forcing answers to stay within retrieved context
+- Clearly visualizing **retrieved evidence → prompt → answer** flow
 
-This project focuses on:
-- Understanding and implementing the full RAG pipeline
-- Comparing strict vs inference-allowed prompting strategies
-- Avoiding hallucination while maintaining practical usability
-- Demonstrating the system via a lightweight web UI
 
-Dev Environment:
-- Language: Python 3.x
-- UI Framework: Streamlit
-- Document Processing: pypdf
-- Embeddings: SentenceTransformers (all-MiniLM-L6-v2)
-- Vector Store: FAISS (CPU)
-- LLM Runtime: Ollama (local LLM, llama3.2:3b)
 
-Features:
-- Upload and process text-based PDF documents
-- Semantic search using vector similarity (FAISS)
-- Evidence-based question answering (RAG)
-- Side-by-side comparison of (1) STRICT prompt (hallucination-safe) and (2) GENEROUS prompt (inference-friendly)
-- Transparent display of retrieved context (evidence)
-- Fully local execution (no paid APIs, no external data leakage)
+## What This Project Focuses On
 
-Prompt Strategies: 
-- STRICT Prompt: Answers only when information is explicitly present. Responds with “Not specified in the document” when insufficient. Designed to minimize hallucination
-- GENEROUS Prompt: Allows reasonable inference from clearly implied instructions. Produces more user-friendly summaries. Still constrained to retrieved document context
+- End-to-end RAG pipeline (PDF → chunks → embeddings → FAISS → retrieval)
+- **Prompt strategy comparison**
+  - STRICT: hallucination-safe, evidence-only
+  - GENEROUS: inference-friendly but still evidence-grounded
+- Behavioral differences across LLM providers
+- Lightweight, interactive Streamlit demo suitable for interviews and portfolios
 
-Application Flow (UI Demo): 
-- Upload a PDF document
-- Enter a question (e.g. “What are the prerequisites before installation?”)
-- Inspect retrieved evidence chunks (Top-k)
-- Compare answers: STRICT and GENEROUS
-- Validate how prompt strategy affects answer quality
 
-<img width="1040" height="582" alt="image" src="https://github.com/user-attachments/assets/819bda9b-a7fa-4073-9f5d-91b5fd557e21" />
+## Tech Stack
 
-How to Run:
+### Core
+- **Language:** Python 3.x
+- **UI:** Streamlit
+- **PDF Parsing:** pypdf
+- **Embeddings:** SentenceTransformers (`all-MiniLM-L6-v2`)
+- **Vector Store:** FAISS (CPU)
+
+### LLM Runtime
+- **Local:** Ollama(LLaMA)
+- **Cloud:** OpenAI API (ChatGPT), Google Gemini API
+
+
+
+## Key Features
+
+- Upload and process **text-based PDF documents**
+- Semantic retrieval using FAISS
+- Automatic **Top-k evidence extraction**
+- Side-by-side comparison:
+  - STRICT vs GENEROUS
+  - Across multiple LLMs
+- Transparent display of:
+  - Retrieved chunks
+  - Merged context block
+  - Prompt text (optional)
+- Supports **local-only** or **local + cloud hybrid** execution
+
+
+
+## Prompt Strategies
+
+### STRICT
+- Answers **only if explicitly supported** by retrieved evidence
+- Returns *“Not specified in the document”* when information is missing
+- Designed to minimize hallucination
+
+### GENEROUS
+- Allows **reasonable inference** when clearly implied by evidence
+- Produces more user-friendly summaries
+- Still restricted to retrieved context (no external knowledge)
+
+
+## Application Flow
+
+1. Upload a PDF document  
+2. Build FAISS index (cached)  
+3. Enter a question  
+4. Retrieve Top-k evidence chunks  
+5. Generate merged context  
+6. Compare answers:
+   - STRICT vs GENEROUS  
+   - Across Ollama / ChatGPT / Gemini  
+
+
+## Repository Structure
+This repository contains two versions of the project:
+- **v1_local**: Initial version (local-only RAG with Ollama)
+- **v2_local-to-cloud**: The 1nd version (multi-LLM comparison with local + cloud models)
+
+```text
+llm-rag-chatbot/
+├── .env
+├── v1_local/                   # v1: Local-only RAG chatbot
+│   └── app.py
+└── v2_local-to-cloud/          # v2: Local → Local+Cloud expansion
+    ├── app/
+        └── app.py  
+
+```
+
+## How to Run
+
 ### 1. Create a virtual environment and install dependencies
 ```bash
 python -m venv .venv
@@ -56,9 +111,24 @@ ollama pull llama3.2:3b
 ollama run llama3.2:3b
 ```
 
+### 3. Configure LLM environment (.env)
+- ㅊreate a `.env` file in the project root (`v2_local-to-cloud/`) and set the LLM models and API keys.
 
-### 3. Run the Streamlit app
-```bash
-streamlit run app.py
+```env
+# Local LLM (Ollama)
+OLLAMA_MODEL=llama3.2:3b
+
+# OpenAI (ChatGPT)
+OPENAI_API_KEY=YOUR_OPENAI_API_KEY
+OPENAI_MODEL=gpt-4o-mini
+
+# Google Gemini
+GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+GEMINI_MODEL=gemini-2.5-flash
 ```
 
+### 4. Run the Streamlit app
+```bash
+cd ./v2_local-to-cloud/
+streamlit run streamlit run app/app.py
+```

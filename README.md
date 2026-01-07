@@ -130,7 +130,7 @@ GEMINI_MODEL=gemini-2.5-flash
 ### 4. Run the Streamlit app
 ```bash
 cd ./v2_local-to-cloud/
-streamlit run streamlit run app/app.py
+streamlit run app/app.py
 ```
 
 <img width="1136" height="621" alt="image" src="https://github.com/user-attachments/assets/434ed7c6-7cc2-4e3d-a9e9-855a82a3ddf6" />
